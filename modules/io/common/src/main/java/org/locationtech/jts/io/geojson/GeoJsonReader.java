@@ -128,7 +128,23 @@ public class GeoJsonReader {
     return result;
   }
 
-  private Geometry create(Map<String, Object> geometryMap,
+  /**
+   * Create a single {@link Geometry} from a @{link Map} with a GeoJSON
+   * structure. This method is intended to be used when implementing Feature
+   * and FeatureCollection parsing.
+   *
+   * Note: this class uses "org.json.simple.parser.JSONParser" to parse the
+   * GeoJSON string into a Map.
+   *
+   * @param geometryMap
+   *          Map with GeoJSON structure
+   * @param geometryFactory
+   *          a GeometryFactory
+   * @return
+   * @throws ParseException
+   *          throws a ParseException if the Map cannot be parsed to a Geometry
+   */
+  public Geometry create(Map<String, Object> geometryMap,
       GeometryFactory geometryFactory) throws ParseException {
 
     Geometry result = null;
@@ -137,7 +153,7 @@ public class GeoJsonReader {
 
     if (type == null) {
       throw new ParseException(
-          "Could not parse Geometry from Json string.  No 'type' property found.");
+          "Could not parse Geometry from Json.  No 'type' property found.");
     } else {
 
       if (GeoJsonConstants.NAME_POINT.equals(type)) {
