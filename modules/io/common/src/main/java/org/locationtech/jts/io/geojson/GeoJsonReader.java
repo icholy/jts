@@ -129,12 +129,12 @@ public class GeoJsonReader {
   }
 
   /**
-   * Create a single {@link Geometry} from a @{link Map} with a GeoJSON
+   * Create a single {@link Geometry} from a {@link Map} with a GeoJson
    * structure. This method is intended to be used when implementing Feature
    * and FeatureCollection parsing.
    *
    * Note: this class uses "org.json.simple.parser.JSONParser" to parse the
-   * GeoJSON string into a Map.
+   * GeoJSON <tt>String</tt> into a {@link Map}.
    *
    * @param geometryMap
    *          Map with GeoJSON structure

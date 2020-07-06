@@ -111,7 +111,21 @@ public class GeoJsonWriter {
     writer.flush();
   }
 
-  private Map<String, Object> create(Geometry geometry, boolean encodeCRS) {
+  /**
+   * Create a {@link Map} structured as GeoJson from a {@link Geometry}. This
+   * method is intended to be used when implementing Feature and
+   * FeatureCollection writing.
+   *
+   * Note: this class uses "org.json.simple.parser.JSONParser" to format the
+   * {@link Map} into a GeoJson <tt>String</tt>
+   *
+   * @param geometry
+   *          {@link Geometry} to convert
+   * @param encodeCRS
+   *          include crs in GeoJson map
+   * @return {@link Map}
+   */
+  public Map<String, Object> create(Geometry geometry, boolean encodeCRS) {
 
     Map<String, Object> result = new LinkedHashMap<String, Object>();
     result.put(GeoJsonConstants.NAME_TYPE, geometry.getGeometryType());
